@@ -26,7 +26,7 @@ loop() {
 		do
 			eval $x
 		done
-	elif [ $numLoops = 4 ]; then
+	elif [ $numLoops = 5 ]; then
 		for x in {a..z}{a..z}{a..z}{a..z}{a..z}
 		do
 			eval $x
