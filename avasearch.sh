@@ -1,25 +1,38 @@
 #!/bin/bash
-echo {a..z} > check.txt
-tr -s ' ' '\n' <check.txt > ceck.txt
-rm check.txt
-while read i; do
-	timeout .12 avahi-resolve -n "$i".local; done <ceck.txt
-rm ceck.txt
-echo {a..z}{a..z} > check.txt
-tr -s ' ' '\n' <check.txt > ceck.txt
-rm check.txt
-while read i; do
-	timeout .12 avahi-resolve -n "$i".local; done <ceck.txt
-rm ceck.txt
-echo {a..z}{a..z}{a..z} > check.txt
-tr -s ' ' '\n' <check.txt > ceck.txt
-rm check.txt
-while read i; do
-	timeout .12 avahi-resolve -n "$i".local; done <ceck.txt
-rm ceck.txt
-echo {a..z}{a..z}{a..z}{a..z} > check.txt
-tr -s ' ' '\n' <check.txt > ceck.txt
-rm check.txt
-while read i; do
-	timeout .12 avahi-resolve -n "$i".local; done <ceck.txt
-rm ceck.txt
+
+eval() {
+	local arg1=$1
+	# timeout .12 avahi-resolve -n $arg1.local;
+	echo $arg1
+}
+
+loop() {
+	local numLoops=$1
+
+	if [ $numLoops = 2 ]; then
+		for x in {a..z}{a..z}
+		do
+			eval $x
+		done
+	
+	elif [ $numLoops = 3 ]; then
+		for x in {a..z}{a..z}{a..z}
+		do
+			eval $x
+		done
+
+	elif [ $numLoops = 4 ]; then
+		for x in {a..z}{a..z}{a..z}{a..z}
+		do
+			eval $x
+		done
+	elif [ $numLoops = 4 ]; then
+		for x in {a..z}{a..z}{a..z}{a..z}{a..z}
+		do
+			eval $x
+		done
+	fi
+}
+
+
+loop 4
